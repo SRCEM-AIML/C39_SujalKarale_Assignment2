@@ -1,0 +1,14 @@
+.sample-page {
+    text-align: center;
+    padding: 40px;
+}
+
+.sample-page h1 {
+    color: #007bff;
+    font-size: 2.2rem;
+}
+
+.sample-page p {
+    font-size: 1.1rem;
+    color: #666;
+}

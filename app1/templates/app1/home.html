@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'app1/styles.css' %}">
+    <title>Django Multi-App Project</title>
+</head>
+<body>
+    <header>Welcome to Django Multi-App Project</header>
+
+    <nav>
+        <a href="{% url 'sample_page' %}">Learn About Jenkins</a>
+    </nav>
+
+    <div class="container homepage">
+        <h1>Why Choose Django?</h1>
+        <p>Django is a high-level Python web framework that enables rapid development and clean, pragmatic design.</p>
+
+        <h2>🔹 Benefits of Django:</h2>
+        <ul>
+            <li><strong>Fast Development:</strong> Built-in features like ORM, authentication, and admin panel.</li>
+            <li><strong>Scalability:</strong> Used by large-scale applications like Instagram and Pinterest.</li>
+            <li><strong>Security:</strong> Django helps developers avoid security pitfalls.</li>
+            <li><strong>Versatility:</strong> Can be used for web applications, APIs, data-driven apps, and more.</li>
+        </ul>
+
+        <p>Start building with Django today and experience the power of rapid development! 🚀</p>
+    </div>
+
+    <footer>© 2025 StudentProject</footer>
+</body>
+</html>

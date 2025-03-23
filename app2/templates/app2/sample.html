@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'app2/styles.css' %}">
+    <title>Jenkins in DevOps</title>
+</head>
+<body>
+    <header>Jenkins: The Power of Automation</header>
+
+    <nav>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </nav>
+
+    <div class="container sample-page">
+        <h1>What is Jenkins?</h1>
+        <p>Jenkins is an open-source automation server that helps developers build, test, and deploy applications efficiently.</p>
+
+        <h2>🔹 Why Use Jenkins in DevOps?</h2>
+        <ul>
+            <li><strong>Continuous Integration (CI):</strong> Automates code testing to detect issues early.</li>
+            <li><strong>Continuous Deployment (CD):</strong> Automates delivery pipelines for faster releases.</li>
+            <li><strong>Scalability:</strong> Works with cloud environments, Kubernetes, and Docker.</li>
+            <li><strong>Extensibility:</strong> Over 1,800 plugins for source control, notifications, and cloud services.</li>
+        </ul>
+
+        <p>Using Jenkins with Docker enhances deployment speed and reliability. Automate your builds and ship code faster! 🚀</p>
+    </div>
+
+    <footer>© 2025 StudentProject</footer>
+</body>
+</html>
