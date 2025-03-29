@@ -2,30 +2,43 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "sujalkarale39/assignment2"
+        DOCKER_IMAGE = 'sujalkarale39/studentproject'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/SRCEM-AIML/C39_SujalKarale_Assignment2.git'
+                git branch: 'main', url: 'https://github.com/SRCEM-AIML/C39_SujalKarale_Assignment2.git'
             }
         }
+
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
-            }
-        }
-        stage('Login to Docker Hub') {
-            steps {
-                withCredentials([string(credentialsId: 'docker-hub-password', variable: 'DOCKER_PASSWORD')]) {
-                    sh 'echo $DOCKER_PASSWORD | docker login -u sujalkarale39 --password-stdin'
+                script {
+                    sh 'docker build -t $DOCKER_IMAGE .'
                 }
             }
         }
-        stage('Push Image to Docker Hub') {
+
+        stage('Push to Docker Hub') {
             steps {
-                sh 'docker push $IMAGE_NAME'
+                script {
+                    withDockerRegistry([credentialsId: 'dockerhub-credentials', url: 'https://index.docker.io/v1/']) {
+                        sh 'docker push $DOCKER_IMAGE'
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    // Stop any running container with the same name
+                    sh 'docker stop studentproject || true && docker rm studentproject || true'
+
+                    // Run the new container
+                    sh 'docker run -d --name studentproject -p 9030:9400 $DOCKER_IMAGE'
+                }
             }
         }
     }
